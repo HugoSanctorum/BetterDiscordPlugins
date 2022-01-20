@@ -4,9 +4,9 @@
  * @authorId 143287609374932992
  * @description Add a clock to discord interface
  * @version 1.0.0
- * @updateUrl https://raw.githubusercontent.com/SpoonMcForky/BetterDiscordPlugins/main/Plugins/KeyboardClick.plugin.js
- * @source https://raw.githubusercontent.com/SpoonMcForky/BetterDiscordPlugins/main/Plugins/KeyboardClick.plugin.js
- * @website https://github.com/SpoonMcForky/BetterDiscordPlugins/blob/main/Plugins/KeyboardClick.plugin.js
+ * @updateUrl https://raw.githubusercontent.com/HugoSanctorum/BetterDiscordPlugins/main/DiscordClock.plugin.js
+ * @source https://raw.githubusercontent.com/HugoSanctorum/BetterDiscordPlugins/main/DiscordClock.plugin.js
+ * @website https://github.com/HugoSanctorum/BetterDiscordPlugins/blob/main/DiscordClock.plugin.js
  */
 
 module.exports = (() => {
@@ -21,7 +21,7 @@ module.exports = (() => {
             version: '1.0.0',
             description: 'Add a clock to discord interface',
             github: 'https://github.com/Anacomb/BetterDiscordPlugins',
-            github_raw: 'https://raw.githubusercontent.com/SpoonMcForky/BetterDiscordPlugins/main/Plugins/DiscordClock.plugin.js'
+            github_raw: 'https://raw.githubusercontent.com/HugoSanctorum/BetterDiscordPlugins/main/DiscordClock.plugin.js'
         },
         version: '1.0.0',
         changelogItems: [
@@ -61,8 +61,8 @@ module.exports = (() => {
             });
         }
         start() {
-            ZeresPluginLibrary.PluginUpdater.checkForUpdate(this.getName(), this.getVersion(), 'https://raw.githubusercontent.com/SpoonMcForky/BetterDiscordPlugins/main/Plugins/KeyboardClick.plugin.js');
-        if (window.PluginUpdates && window.PluginUpdates.plugins) delete PluginUpdates.plugins['https://github.com/SpoonMcForky/BetterDiscordPlugins/blob/main/Plugins/KeyboardClick.plugin.js'];
+            ZeresPluginLibrary.PluginUpdater.checkForUpdate(this.getName(), this.getVersion(), 'https://raw.githubusercontent.com/HugoSanctorum/BetterDiscordPlugins/main/DiscordClock.plugin.js');
+        if (window.PluginUpdates && window.PluginUpdates.plugins) delete PluginUpdates.plugins['https://github.com/HugoSanctorum/BetterDiscordPlugins/blob/main/DiscordClock.plugin.js'];
          }
         stop() { }
 
@@ -80,30 +80,30 @@ module.exports = (() => {
             return class Clock extends Plugin {
                 
                 onStart() {
-					let discordNavBaseButtonContainer = Api.DOMTools.query(".tutorialContainer-1pL9QS");
-					let clockIcon = Api.DOMTools.parseHTML("<div style='color:white; font-size:18px; text-align:center; margin-bottom: 5px;'></div>");
-					let clockTime = Api.DOMTools.parseHTML("<div style='color:white; font-size:16px; text-align:center; margin-bottom: 12px;'></div>");
-					Api.DOMTools.insertAfter(clockTime, discordNavBaseButtonContainer);
-					Api.DOMTools.insertAfter(clockIcon, discordNavBaseButtonContainer);
-					
-					const anim = ['🕛','🕐','🕑','🕒','🕓','🕔','🕕','🕖','🕗','🕘','🕙','🕚'];
-					let animPointer = 0;
-					
-					setInterval(() => {
-						let date = new Date();
-					    let h = date.getHours();
-					    let m = date.getMinutes();
-					    let s = date.getSeconds();
-					    
-					    h = (h < 10) ? "0" + h : h;
-					    m = (m < 10) ? "0" + m : m;
-					    s = (s < 10) ? "0" + s : s;
-					    
-					    let time = h + ":" + m + ":" + s;
-					    Api.DOMTools.text(clockIcon, anim[animPointer++]);
-					    Api.DOMTools.text(clockTime, time);
-					    if (animPointer > 11) animPointer = 0; 
-					}, 1000);
+                    let discordNavBaseButtonContainer = Api.DOMTools.query(".tutorialContainer-1pL9QS");
+                    let clockIcon = Api.DOMTools.parseHTML("<div style='color:white; font-size:18px; text-align:center; margin-bottom: 5px;'></div>");
+                    let clockTime = Api.DOMTools.parseHTML("<div style='color:white; font-size:16px; text-align:center; margin-bottom: 12px;'></div>");
+                    Api.DOMTools.insertAfter(clockTime, discordNavBaseButtonContainer);
+                    Api.DOMTools.insertAfter(clockIcon, discordNavBaseButtonContainer);
+                    
+                    const anim = ['🕛','🕐','🕑','🕒','🕓','🕔','🕕','🕖','🕗','🕘','🕙','🕚'];
+                    let animPointer = 0;
+                    
+                    setInterval(() => {
+                        let date = new Date();
+                        let h = date.getHours();
+                        let m = date.getMinutes();
+                        let s = date.getSeconds();
+                        
+                        h = (h < 10) ? "0" + h : h;
+                        m = (m < 10) ? "0" + m : m;
+                        s = (s < 10) ? "0" + s : s;
+                        
+                        let time = h + ":" + m + ":" + s;
+                        Api.DOMTools.text(clockIcon, anim[animPointer++]);
+                        Api.DOMTools.text(clockTime, time);
+                        if (animPointer > 11) animPointer = 0; 
+                    }, 1000);
                 }
                 stop() {
                     
