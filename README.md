@@ -1,3 +1,3 @@
-# LIST OF MY BETTER DISCORD PLUGIN :
+# List of my BetterDiscord plugins :
 
-* DiscordClock : Add a clock to discord interface.
+* `DiscordClock` : Add a clock to the discord menu.
